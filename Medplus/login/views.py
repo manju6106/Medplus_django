@@ -27,46 +27,6 @@ def register(request):
     return render(request, 'register.html')
 
 
-# def login(request):
-#     if request.method == 'POST':
-#         uname = request.POST.get('uname')
-#         p = request.POST.get('p')
-#         if uname == 'Manjula' and p == 'manju@123':
-#             return render(request, 'operator.html')
-#         elif Register.objects.filter(email=uname, password=p).exists():
-#             return render(request, 'operator.html')
-#         else:
-#             return render(request, 'login.html', {'error': 'Invalid username or password'})
-#     return render(request, 'login.html')
-#
-# from django.shortcuts import render, redirect
-# from .models import Register, Operator
-#
-# def login(request):
-#     if request.method == 'POST':
-#         uname = request.POST.get('uname')
-#         pwd = request.POST.get('p')
-#
-#         # Operator login
-#         if Operator.objects.filter(uname=uname, pwd=pwd).exists():
-#             operator = Operator.objects.get(uname=uname, pwd=pwd)
-#             request.session['user_type'] = 'operator'
-#             request.session['operator_id'] = operator.opid
-#             return redirect('operator')  # operator full access page
-#
-#         # Customer login
-#         elif Register.objects.filter(email=uname, password=pwd).exists():
-#             customer = Register.objects.get(email=uname, password=pwd)
-#             request.session['user_type'] = 'customer'
-#             request.session['customer_id'] = customer.cid
-#             return redirect('search')  # customers can only search/enter quantity
-#
-#         else:
-#             return render(request, 'login.html', {'error': 'Invalid username or password'})
-#
-#     return render(request, 'login.html')
-
-
 def login(request):
     if request.method == 'POST':
         uname = request.POST.get('uname')
@@ -118,45 +78,6 @@ def admin_page(request):
 
 def operator(request):
     return render(request,'operator.html')
-##====================================================================================
-
-# cart = []
-#
-# def add(request):
-#     if request.method == "POST":
-#         Medicine.objects.create(
-#             mid=request.POST['mid'],
-#             name=request.POST['name'],
-#             cost=request.POST['cost'],
-#             expiry=request.POST['expiry'],
-#             usage=request.POST['usage'],
-#             dosage=request.POST['dosage'],
-#             image=request.FILES['image']
-#         )
-#         return HttpResponseRedirect(reverse("add"))
-#     return render(request, 'add.html')
-#
-#
-# def remove(request):
-#     if request.method == "POST":
-#         mid = request.POST['mid']
-#         Medicine.objects.filter(mid=mid).delete()
-#         return HttpResponse("Medicine Removed")
-#     return render(request, 'remove.html')
-#
-#
-# def search(request):
-#     med = None
-#     error_msg = ""
-#
-#     if request.method == "POST":
-#         name = request.POST['name']
-#         med = Medicine.objects.filter(name=name).first()
-#
-#         if not med:
-#             error_msg = f"Medicine '{name}' not found. Please add it."
-#
-#     return render(request, 'search.html', {'med': med, 'error_msg': error_msg})
 
 
 def search(request):
@@ -181,33 +102,6 @@ def search(request):
         'can_bill': can_bill
     })
 
-#
-# def billing(request):
-#     total = None
-#     if request.method == "POST":
-#         mid = request.POST['mid']
-#         qty = int(request.POST['qty'])
-#
-#         med = Medicine.objects.get(mid=mid)
-#         total = med.cost * qty
-#         Bill.objects.create(amount=total)
-#     return render(request, 'billing.html', {'total': total})
-#
-# def amount(request):
-#     bills = Bill.objects.all().order_by('-date')  # latest first
-#     total = Bill.objects.aggregate(Sum('amount'))['amount__sum'] or 0
-#
-#     return render(request, 'amount.html', {
-#         'bills': bills,
-#         'total': total
-#     })
-
-#
-# def medicines_list(request):
-#     meds = Medicine.objects.all()
-#     return render(request, 'medlist.html', {"meds": meds})
-
-#---------------------------------------------------------------------------------------------------------
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -305,8 +199,7 @@ def welcome(request):
 def totalsales(request):
     return render(request, 'totalsales.html')
 
-# def datewise(request):
-#     return render(request, 'datewise.html')
+
 from django.db.models import Sum
 from datetime import datetime
 
@@ -335,9 +228,6 @@ def datewise(request):
         'total': total
     })
 
-
-# def operatorwise(request):
-#     return render(request, 'operatorwise.html')
 from django.shortcuts import render
 from .models import Bill, Operator
 
@@ -362,9 +252,6 @@ def operatorwise(request):
 
     return render(request, 'operatorwise.html', {'bills': bills, 'msg': msg})
 
-#
-# def betweendates(request):
-#     return render(request, 'betweendates.html')
 
 def betweendates(request):
     if request.method == "POST":
@@ -381,38 +268,6 @@ def betweendates(request):
         })
 
     return render(request, 'betweendates.html')
-
-
-#======================================================================================================================
-
-# def addoperator(request):
-#     if request.method == 'POST':
-#         a = request.POST.get('cid')
-#         b = request.POST.get('cname')
-#         c = request.POST.get('password')
-#         d = request.POST.get('gender')
-#         e = request.POST.get('phno')
-#         operator.objects.create(opid=a, uname=b, pwd=c, g=d, phno=e)
-#     return render(request, 'addoperator.html')
-from .models import Operator
-
-# def addoperator(request):
-#     if request.method == 'POST':
-#         a = request.POST.get('cid')
-#         b = request.POST.get('cname')
-#         c = request.POST.get('password')
-#         d = request.POST.get('gender')
-#         e = request.POST.get('phno')
-#
-#         Operator.objects.create(opid=a, uname=b, pwd=c, g=d, phno=e)
-#
-#     return render(request, 'addoperator.html')
-#
-#
-# def deleteoperator(request):
-#     return render(request, 'deleteoperator.html')
-
-#=================================================================================================
 
 def addoperator(request):
     if request.session.get('user_type') != 'operator':
@@ -466,6 +321,7 @@ def log(request):
 
 def welcome1(request):
     return render(request, 'welcome1.html')
+
 
 
 
