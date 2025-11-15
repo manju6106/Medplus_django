@@ -1,0 +1,65 @@
+        {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Amount - MediCare</title>
+</head>
+<body>
+
+<table width="100%" border="0">
+    <tr>
+        <td align="left" width="60%">
+            <img src="{% static 'images/logo1.png' %}" height="80" width="80" style="vertical-align:middle;">
+            <span style="font-size:28px; color:red; font-weight:bold; margin-left:10px;">
+                MediCare Pharmacy
+            </span>
+        </td>
+        <td align="right" width="40%">
+            <div><b>Ph no:</b> 8886392162</div>
+            <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+        </td>
+    </tr>
+</table>
+<hr>
+
+<h3 align="center">
+    <a href="{% url 'home' %}">Home</a>&emsp;
+    <a href="{% url 'add' %}">ADD</a>&emsp;
+    <a href="{% url 'remove' %}">Remove</a>&emsp;
+    <a href="{% url 'search' %}">Search</a>&emsp;
+    <a href="{% url 'billing' %}">Billing</a>&emsp;
+    <a href="{% url 'amount' %}">CheckAmount</a>&emsp;
+    <a href="{% url 'medlist' %}">Medicines List</a>&emsp;
+    <a href="{% url 'logout' %}">Logout</a>
+</h3>
+
+<hr>
+<h2 align="center">All Transactions</h2>
+
+<table border="2" align="center" cellpadding="10">
+    <tr>
+        <th>Bill ID</th>
+        <th>Date</th>
+        <th>Amount</th>
+    </tr>
+
+    {% for bill in bills %}
+    <tr>
+        <td>{{ bill.id }}</td>
+        <td>{{ bill.date }}</td>
+        <td>{{ bill.amount }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="2" align="center"><b>Total Amount:</b></td>
+        <td><b>{{ total }}</b></td>
+    </tr>
+</table>
+
+<!--<h3 align="center" style="margin-top:20px;">-->
+<!--    Total Amount: {{ total }}-->
+</h3>
+</body>
+</html>

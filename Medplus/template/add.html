@@ -1,0 +1,107 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<table align="center">-->
+<!--<h2 align="center">Add Medicine</h2>-->
+<!--<form method="post" enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+<!--    MID: <input type="number" name="mid"><br><br>-->
+<!--    Name: <input type="text" name="name"><br><br>-->
+<!--    Cost: <input type="number" name="cost"><br><br>-->
+<!--    Expiry: <input type="date" name="expiry"><br><br>-->
+<!--    Usage: <input type="text" name="usage"><br><br>-->
+<!--    Dosage: <input type="text" name="dosage"><br><br>-->
+<!--    Image: <input type="file" name="image"><br><br>-->
+
+<!--    <input type="submit" value="ADD">-->
+<!--</form>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Medicine - MediCare</title>
+</head>
+<body>
+
+<table width="100%">
+    <tr>
+        <td align="left" width="60%">
+            <img src="{% static 'images/logo1.png' %}" height="80" width="80" style="vertical-align:middle;">
+            <span style="font-size:28px; color:red; font-weight:bold; margin-left:10px;">
+                MediCare Pharmacy
+            </span>
+        </td>
+        <td align="right" width="40%">
+            <div><b>Ph no:</b> 8886392162</div>
+            <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+        </td>
+    </tr>
+</table>
+<hr>
+
+<h3 align="center">
+    <a href="{% url 'home' %}">Home</a>&emsp;
+    <a href="{% url 'add' %}">ADD</a>&emsp;
+    <a href="{% url 'remove' %}">Remove</a>&emsp;
+    <a href="{% url 'search' %}">Search</a>&emsp;
+    <a href="{% url 'billing' %}">Billing</a>&emsp;
+    <a href="{% url 'amount' %}">CheckAmount</a>&emsp;
+    <a href="{% url 'medlist' %}">Medicines List</a>&emsp;
+    <a href="{% url 'logout' %}">Logout</a>
+</h3>
+
+<hr>
+
+<h2 align="center">Add Medicine</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center" border="0" cellpadding="10" cellspacing="0">
+        <tr>
+            <td>MID</td>
+            <td><input type="number" name="mid"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td><input type="number" name="cost"></td>
+        </tr>
+        <tr>
+            <td>Expiry</td>
+            <td><input type="date" name="expiry"></td>
+        </tr>
+        <tr>
+            <td>Usage</td>
+            <td><input type="text" name="usage"></td>
+        </tr>
+        <tr>
+            <td>Dosage</td>
+            <td><input type="text" name="dosage"></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="file" name="image"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="ADD">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

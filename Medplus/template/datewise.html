@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <table width="100%">
+        <tr>
+            <td align="left" width="60%">
+                <img src="{% static 'images/logo1.png' %}" alt="logo" height="80" width="80" style="vertical-align:middle;">
+                <span style="font-size:28px; color:red; font-weight:bold; vertical-align:middle; margin-left:10px;">
+                    MediCare Pharmacy
+                </span>
+            </td>
+            <td align="right" width="40%">
+                <div><b>Ph no:</b> 8886392162</div>
+                <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3 align="center">
+        <a href="{% url 'home' %}">Home</a>&emsp;
+        <a href="{% url 'totalsales' %}">TotalSales</a>&emsp;
+        <a href="{% url 'datewise' %}">Datewise</a>&emsp;
+        <a href="{% url 'operatorwise' %}">Operatorwise</a>&emsp;&emsp;
+        <a href="{% url 'betweendates' %}">Betweendates</a>&emsp;
+        <a href="{% url 'log' %}">Logout</a>
+    </h3>
+
+    <hr>
+
+<!--    <form action="{% url 'datewise' %}" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <table align="center" cellpadding="8">-->
+<!--            <tr>-->
+<!--                <td>Enter Date:</td>-->
+<!--                <td><input type="text" name="cid" required></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td colspan="2" align="center">-->
+<!--                    <input type="submit" value="Submit">&emsp;-->
+<!--                </td>-->
+<!--            </tr>-->
+
+<!--        </table>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<form action="{% url 'datewise' %}" method="post">
+    {% csrf_token %}
+    <table align="center" cellpadding="8">
+        <tr>
+            <td>Select Date:</td>
+            <td><input type="date" name="cid" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Submit">
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% if bills != None %}
+    <h2 align="center">Sales on {{ request.POST.cid }}</h2>
+
+    {% if bills %}
+        <table border="2" align="center" cellpadding="10">
+            <tr>
+                <th>Bill ID</th>
+                <th>Medicine Name</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+
+            {% for bill in bills %}
+            <tr>
+                <td>{{ bill.id }}</td>
+                <td>{{ bill.mname }}</td>
+                <td>{{ bill.date }}</td>
+                <td>{{ bill.amount }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="3" align="center"><b>Total</b></td>
+                <td><b>{{ total }}</b></td>
+            </tr>
+        </table>
+    {% else %}
+        <h3 align="center" style="color:red;">No bills found on this date.</h3>
+    {% endif %}
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operator Page - MediCare</title>
+</head>
+<body>
+
+    <table width="100%">
+        <tr>
+            <td align="left" width="60%">
+                <img src="{% static 'images/logo1.png' %}" alt="logo" height="80" width="80" style="vertical-align:middle;">
+                <span style="font-size:28px; color:red; font-weight:bold; vertical-align:middle; margin-left:10px;">
+                    MediCare Pharmacy
+                </span>
+            </td>
+             <td align="right" width="40%">
+                <div><b>Ph no:</b> 8886392162</div>
+                <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+            </td>
+        </tr>
+    </table>
+    <hr>
+
+    <h3 align="center">
+        <a href="{% url 'home' %}">Home</a>&emsp;
+        <a href="{% url 'add' %}">ADD</a>&emsp;
+        <a href="{% url 'remove' %}">Remove</a>&emsp;
+        <a href="{% url 'search' %}">Search</a>&emsp;
+        <a href="{% url 'billing' %}">Billing</a>&emsp;
+        <a href="{% url 'amount' %}">CheckAmount</a>&emsp;
+        <a href="{% url 'medlist' %}">Medicines List</a>&emsp;
+        <a href="{% url 'logout' %}">Logout</a>
+    </h3>
+
+    <hr>
+
+</body>
+</html>

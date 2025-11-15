@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Registration</title>
+</head>
+<body>
+     <table width="100%">
+        <tr>
+            <td align="left" width="60%">
+                <img src="{% static 'images/logo1.png' %}" alt="logo" height="80" width="80" style="vertical-align:middle;">
+                <span style="font-size:28px; color:red; font-weight:bold; vertical-align:middle; margin-left:10px;">
+                    MediCare Pharmacy
+                </span>
+            </td>
+            <td align="right" width="40%">
+                <div><b>Ph no:</b> 8886392162</div>
+                <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- Navigation -->
+    <h3 align="center">
+        <a href="{% url 'home' %}">Home</a>&emsp;
+        <a href="{% url 'register' %}">Register</a>&emsp;
+        <a href="{% url 'login' %}">Login</a>&emsp;
+        <a href="{% url 'aboutus' %}">About Us</a>&emsp;
+        <a href="{% url 'contactus' %}">Contact Us</a>&emsp;
+        <a href="{% url 'admin_page' %}">Admin</a>
+    </h3>
+
+    <hr>
+    <h2 align="center">Customer Registration Form</h2>
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <table align="center" cellpadding="8">
+            <tr>
+                <td>Customer ID:</td>
+                <td><input type="text" name="cid" required></td>
+            </tr>
+            <tr>
+                <td>Customer Name:</td>
+                <td><input type="text" name="cname" required></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                    <input type="radio" name="gender" value="Other"> Other
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth:</td>
+                <td><input type="date" name="DOB" required></td>
+            </tr>
+            <tr>
+                <td>Phone No:</td>
+                <td><input type="text" name="phno" required></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><input type="text" name="state" required></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" name="city" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Register">&emsp;
+                    <input type="submit" value="Cancel">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" style="padding-top:10px;">
+                  <h3> If you already registered,<a href="{% url 'login' %}">Login
+                  </a></h3>
+                </td>
+            </tr>
+
+
+        </table>
+    </form>
+</body>
+</html>

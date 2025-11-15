@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login - MediCare</title>
+</head>
+<body>
+
+    <div align="right">
+        <a href="{% url 'home' %}">Back</a>
+    </div>
+
+    <h2 align="center">Admin Login</h2>
+    <hr>
+
+    <form method="POST" align="center">
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="uname" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="p" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    {% if error %}
+        <p align="center" style="color:red;">{{ error }}</p>
+    {% endif %}
+
+</body>
+</html>

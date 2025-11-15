@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout - MediCare</title>
+</head>
+<body>
+    <h2 align="center">Are you sure you want to logout?</h2>
+    <form method="POST" align="center">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Logout">&emsp;
+        <input type="submit" name="action" value="Cancel">
+    </form>
+</body>
+</html>

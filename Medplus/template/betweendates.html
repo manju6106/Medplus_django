@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing Between Dates</title>
+</head>
+<body>
+
+    <table width="100%">
+        <tr>
+            <td align="left" width="60%">
+                <img src="{% static 'images/logo1.png' %}" alt="logo" height="80" width="80" style="vertical-align:middle;">
+                <span style="font-size:28px; color:red; font-weight:bold; vertical-align:middle; margin-left:10px;">
+                    MediCare Pharmacy
+                </span>
+            </td>
+            <td align="right" width="40%">
+                <div><b>Ph no:</b> 8886392162</div>
+                <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3 align="center">
+        <a href="{% url 'home' %}">Home</a>&emsp;
+        <a href="{% url 'totalsales' %}">TotalSales</a>&emsp;
+        <a href="{% url 'datewise' %}">Datewise</a>&emsp;
+        <a href="{% url 'operatorwise' %}">Operatorwise</a>&emsp;&emsp;
+        <a href="{% url 'betweendates' %}">Betweendates</a>&emsp;
+        <a href="{% url 'log' %}">Logout</a>
+    </h3>
+
+    <hr>
+
+    <form action="{% url 'betweendates' %}" method="post">
+        {% csrf_token %}
+
+        <table align="center" cellpadding="8">
+            <tr>
+                <td>Start Date:</td>
+                <td><input type="date" name="sdate" required></td>
+            </tr>
+            <tr>
+                <td>End Date:</td>
+                <td><input type="date" name="edate" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+    <br>
+
+{% if bills %}
+    <h2 align="center">Billing Details from {{ sdate }} to {{ edate }}</h2>
+
+<!--    <table border="1" align="center" cellpadding="8">-->
+<!--        <tr style="font-weight:bold;">-->
+<!--            <td>Bill No</td>-->
+<!--            <td>Operator ID</td>-->
+<!--            <td>Date</td>-->
+<!--            <td>Total Amount</td>-->
+<!--        </tr>-->
+
+<!--        {% for b in bills %}-->
+<!--        <tr>-->
+<!--            <td>{{ b.id }}</td>-->
+<!--            <td>{{ b.operator.id }}</td>-->
+<!--            <td>{{ b.date }}</td>-->
+<!--            <td>{{ b.amount }}</td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </table>-->
+    <table border="1" align="center" cellpadding="8">
+    <tr style="font-weight:bold;">
+        <td>Bill No</td>
+        <td>Operator ID</td>
+        <td>Date</td>
+        <td>Total Amount</td>
+    </tr>
+
+    {% for b in bills %}
+    <tr>
+        <td>{{ b.id }}</td>
+        <td>{{ b.operator.opid }}</td>
+        <td>{{ b.date }}</td>
+        <td>{{ b.amount }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% else %}
+    {% if sdate %}
+        <h3 align="center" style="color:red;">No records found for these dates</h3>
+    {% endif %}
+{% endif %}
+
+</body>
+</html>

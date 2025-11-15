@@ -1,0 +1,58 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediCare Pharmacy</title>
+</head>
+<body>
+
+    <table width="100%">
+        <tr>
+            <td align="left" width="60%">
+                <img src="{% static 'images/logo1.png' %}" alt="logo" height="80" width="80" style="vertical-align:middle;">
+                <span style="font-size:28px; color:red; font-weight:bold; vertical-align:middle; margin-left:10px;">
+                    MediCare Pharmacy
+                </span>
+            </td>
+            <td align="right" width="40%">
+                <div><b>Ph no:</b> 8886392162</div>
+                <div><b>Email:</b> r.manjureddy1011@gmail.com</div>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+    <h3 align="center">
+        <a href="{% url 'home' %}">Home</a>&emsp;
+        <a href="{% url 'register' %}">Register</a>&emsp;
+        <a href="{% url 'login' %}">Login</a>&emsp;
+        <a href="{% url 'aboutus' %}">About Us</a>&emsp;
+        <a href="{% url 'contactus' %}">Contact Us</a>&emsp;
+        <a href="{% url 'admin_login' %}">Admin</a>
+    </h3>
+
+    <hr>
+
+    <marquee behavior="scroll" direction="left" scrollamount="15">
+        <img src="{% static 'images/tb-0.jpeg' %}" height="400" width="400" alt="image"> &emsp;
+        <img src="{% static 'images/tb-1.jpg' %}" height="400" width="400" alt="image"> &emsp;
+        <img src="{% static 'images/tb-3.jpg' %}" height="400" width="400" alt="image"> &emsp;
+        <img src="{% static 'images/tb-2.jpg' %}" height="400" width="400" alt="image"> &emsp;
+        <img src="{% static 'images/tb-4.jpg' %}" height="400" width="400" alt="image">
+    </marquee>
+
+    <hr>
+
+    <h2 align="center" style="color:green;">Be Safe With Our Medicine</h2>
+    <p align="center">
+        Copy Rights @ Sathya Technology &emsp;
+        @Manjula &emsp;
+        Follow us:
+        <a href="https://www.youtube.com/@SathyaTechnologieshyd" target="_blank">
+            <img src="{% static 'images/utube.jpg' %}" height="10" width="20" alt="YouTube">
+        </a>
+    </p>
+</body>
+</html>
