@@ -84,10 +84,17 @@ http://127.0.0.1:8000/
 - Expiry alerts and reporting  
 - Improved UI design and responsiveness  
 
-## Requirements File
-Ensure `requirements.txt` contains:
+## Requirements
+The project depends on the following Python packages:
 
-(Add any missing packages your project needs.)
+Django
+Pillow
+
+Ensure these are included in `requirements.txt`.
+
+## License
+This project is free to use for learning and development. Add a formal license file if needed.
+
 
 ## License
 Free to use for learning and development unless a specific license is added.
